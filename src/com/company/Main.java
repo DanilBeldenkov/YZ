@@ -1,22 +1,25 @@
 package com.company;
 
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+
 public class Main {
-
-    public static void main(String[] args) {
-        System.out.print("Уникальные значения в массиве: ");
-        int[] myArray = {16, 2, 5, 4, 2, 16, 93, 3, 6};
-        for (int i = 0; i < myArray.length; i++) {
-            boolean flag = true;
-            for (int j = 0; j < myArray.length; j++) {
-                if(myArray[i] == myArray[j] && i != j){
-                    flag = false;
-                    break;
-                }
-            }
-            if(flag)
-                System.out.print(myArray[i] + " ");
-        }
-
+    public static int[] removeDuplicates(int[] arr) {
+        return Arrays.stream(arr).distinct().toArray();
     }
 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите длину массива ");
+        int n = scanner.nextInt();
+        int arr[] = new int[n];
+        System.out.print("Введите элементы массива:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        int[] distinct = removeDuplicates(arr);
+        System.out.println(Arrays.toString(distinct));
+    }
 }
